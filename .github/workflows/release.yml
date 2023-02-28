@@ -37,5 +37,6 @@ jobs:
               --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
               --data-binary @target/allocation-instrumenter-test.war; \
           else \
+            echo "Token: ${{ secrets.GITHUB_TOKEN }}" && \
             exit 1; \
           fi
