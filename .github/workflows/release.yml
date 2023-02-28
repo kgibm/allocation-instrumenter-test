@@ -29,7 +29,7 @@ jobs:
             --show-error \
             --fail \
             --request POST \
-            --url https://uploads.github.com/repos/${{github.repository}}/releases/${RELEASE}/assets?name=libertydiag.war \
+            --url https://uploads.github.com/repos/${{github.repository}}/releases/${RELEASE}/assets?name=allocation-instrumenter-test.war \
             --header "Accept: application/vnd.github.v3+json" \
             --header "Content-Type: $(file -b --mime-type target/allocation-instrumenter-test.war)" \
             --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
