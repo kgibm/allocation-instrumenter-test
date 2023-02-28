@@ -25,13 +25,17 @@ jobs:
                        --header "Accept: application/vnd.github.v3+json" \
                        --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" | jq '.id')" && \
           echo "RELEASE: ${RELEASE}" && \
-          curl \
-            --silent \
-            --show-error \
-            --fail \
-            --request POST \
-            --url https://uploads.github.com/repos/${{github.repository}}/releases/${RELEASE}/assets?name=allocation-instrumenter-test.war \
-            --header "Accept: application/vnd.github.v3+json" \
-            --header "Content-Type: $(file -b --mime-type target/allocation-instrumenter-test.war)" \
-            --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            --data-binary @target/allocation-instrumenter-test.war
+          if [ "${RELEASE}" != "" ]; then \
+            curl \
+              --silent \
+              --show-error \
+              --fail \
+              --request POST \
+              --url https://uploads.github.com/repos/${{github.repository}}/releases/${RELEASE}/assets?name=allocation-instrumenter-test.war \
+              --header "Accept: application/vnd.github.v3+json" \
+              --header "Content-Type: $(file -b --mime-type target/allocation-instrumenter-test.war)" \
+              --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              --data-binary @target/allocation-instrumenter-test.war; \
+          else \
+            exit 1; \
+          fi
