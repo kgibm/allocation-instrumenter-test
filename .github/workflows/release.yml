@@ -24,7 +24,7 @@ jobs:
                        --data '{"tag_name":"${{github.ref_name}}","name":"${{github.repository}} ${{github.ref_name}}","draft":false,"prerelease":false}' \
                        --header "Accept: application/vnd.github.v3+json" \
                        --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" | jq '.id')" && \
-          echo "Create release code: $?" && \
+          echo "RELEASE: ${RELEASE}" && \
           curl \
             --silent \
             --show-error \
