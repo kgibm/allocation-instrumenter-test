@@ -26,7 +26,7 @@ public class AllocationInstrumenterInitializer implements ServletContextListener
 	public final static int THRESHOLD = Integer.getInteger("ALLOCATION_THRESHOLD", 1048576);
 
 	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
+	public void contextInitialized(ServletContextEvent sce) {
 		System.out.println("AllocationInstrumenterInitializer started");
 
 		AllocationRecorder.addSampler(new Sampler() {
@@ -43,6 +43,6 @@ public class AllocationInstrumenterInitializer implements ServletContextListener
 	}
 
 	@Override
-	public void contextInitialized(ServletContextEvent sce) {
+	public void contextDestroyed(ServletContextEvent sce) {
 	}
 }

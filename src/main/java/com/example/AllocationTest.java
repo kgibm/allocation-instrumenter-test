@@ -13,6 +13,7 @@ public class AllocationTest extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int size = AllocationInstrumenterInitializer.THRESHOLD * 2;
+		System.out.println("AllocationTest called with size " + size);
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
 		out.println("Allocating object of size " + size);
