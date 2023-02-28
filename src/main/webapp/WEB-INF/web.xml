@@ -3,5 +3,18 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>allocation-instrumenter-test</display-name>
+	<display-name>allocation-instrumenter-test</display-name>
+	<listener>
+		<listener-class>com.example.AllocationInstrumenterInitializer</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>AllocationTest</servlet-name>
+		<display-name>AllocationTest</display-name>
+		<description></description>
+		<servlet-class>com.example.AllocationTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AllocationTest</servlet-name>
+		<url-pattern>/AllocationTest</url-pattern>
+	</servlet-mapping>
 </web-app>
