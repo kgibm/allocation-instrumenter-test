@@ -1,3 +1,6 @@
+# First time: Go to REPO/settings/actions
+# Workflow permissions = Read and Write permissions
+
 # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
 name: Release
 on: 
@@ -37,6 +40,5 @@ jobs:
               --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
               --data-binary @target/allocation-instrumenter-test.war; \
           else \
-            echo "Token: ${{ secrets.GITHUB_TOKEN }}" && \
             exit 1; \
           fi
